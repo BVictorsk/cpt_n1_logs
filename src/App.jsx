@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import ThemeSelect from './pages/tema/ThemeSelect';
 import React, { useState, useEffect } from 'react';
 import './App.css'
@@ -10,6 +10,7 @@ import Cpt from "./pages/cpt/Cpt";
 import Nitro from "./pages/nitro/Nitro";
 import Oji from "./pages/oji/Oji";
 import Contato from "./pages/contato/Contato";
+import Login from "./pages/login/Login";
 
 
 function App() {
@@ -20,8 +21,18 @@ function App() {
     return storedTheme ? JSON.parse(storedTheme) : nightTheme;
   });
 
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    // Verifica se há informações de autenticação armazenadas no localStorage
+    const authenticatedUser = localStorage.getItem('authenticatedUser');
+    return authenticatedUser ? true : false;
+  });
+
   const changeTheme = (theme) => {
     setSelectedTheme(theme);
+  };
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
   };
   
   // Efeito para salvar o tema no localStorage sempre que o tema é alterado
@@ -32,19 +43,30 @@ function App() {
   
   return (
     <>
-    <ThemeProvider theme={selectedTheme}>
+      <ThemeProvider theme={selectedTheme}>
         <Router class="app">
-          <div className="app-container">
-            <Sidebar />
+          {isAuthenticated ? (
+            <div className="app-container">
+              <Sidebar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="theme-change" element={<ThemeSelect changeTheme={changeTheme} />} />
+                <Route path="/Cpt" element={<Cpt />} />
+                <Route path="/Nitro" element={<Nitro />} />
+                <Route path="/Oji" element={<Oji />} />
+                <Route path="/Contato" element={<Contato />} />
+              </Routes>
+            </div>
+          ) : (
+            // Se não estiver autenticado, redireciona para a página de login
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="theme-change" element={<ThemeSelect changeTheme={changeTheme} />} />
-              <Route path="/Cpt" element={<Cpt />} />
-              <Route path="/Nitro" element={<Nitro />} />
-              <Route path="/Oji" element={<Oji />} />
-              <Route path="/Contato" element={<Contato />} />
+              <Route
+                path="/"
+                element={<Login onLogin={handleLogin} />}
+              />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
-          </div>
+          )}
         </Router>
       </ThemeProvider>
     </>
