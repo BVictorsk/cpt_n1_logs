@@ -6,6 +6,10 @@ import './App.css'
 import { ThemeProvider, nightTheme, auroraTheme, deepTheme, urbanTheme } from './components/theme/theme';
 import Sidebar from './components/sidebar/Sidebar';
 import Home from './pages/home/Home'
+import Cpt from "./pages/cpt/Cpt";
+import Nitro from "./pages/nitro/Nitro";
+import Oji from "./pages/oji/Oji";
+import Contato from "./pages/contato/Contato";
 
 
 function App() {
@@ -35,6 +39,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="theme-change" element={<ThemeSelect changeTheme={changeTheme} />} />
+              <Route path="/Cpt" element={<Cpt />} />
+              <Route path="/Nitro" element={<Nitro />} />
+              <Route path="/Oji" element={<Oji />} />
+              <Route path="/Contato" element={<Contato />} />
             </Routes>
           </div>
         </Router>
