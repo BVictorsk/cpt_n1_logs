@@ -267,7 +267,7 @@ Podemos realizar atendimento?`;
           <li>
             <a
               className={activeTab === 'one' ? 'active' : ''}
-              href="#/one"
+              href="/contato-sem-sucesso"
               onClick={() => handleTabClick('one')}
             >
               Contato
@@ -276,7 +276,7 @@ Podemos realizar atendimento?`;
           <li>
             <a
               className={activeTab === 'two' ? 'active' : ''}
-              href="#/two"
+              href="/sem-contato"
               onClick={() => handleTabClick('two')}
             >
               Sem Contato
@@ -285,7 +285,7 @@ Podemos realizar atendimento?`;
           <li>
             <a
               className={activeTab === 'three' ? 'active' : ''}
-              href="#/three"
+              href="/contato-teams"
               onClick={() => handleTabClick('three')}
             >
               Teams
