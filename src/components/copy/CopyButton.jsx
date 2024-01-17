@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Button  = styled.button`
-  background: ${props => props.theme.palette.background.button};
+  background: ${props => props.theme.palette.background.buttonHover};
   width: 10rem;
   color: white;
   font-family: inherit;
