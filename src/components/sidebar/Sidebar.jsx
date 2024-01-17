@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
+import FormatPaintIcon from '@mui/icons-material/FormatPaint';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import PhoneDisabledOutlinedIcon from '@mui/icons-material/PhoneDisabledOutlined';
 
 const SidebarContainer = styled.div`
     background: ${props => props.theme.palette.sidebar.main};  
@@ -20,23 +23,32 @@ const SidebarContainer = styled.div`
         list-style-type: none;
         li {
             margin: .5rem;
-            
         }
     }
 
     &:hover {
         flex: 2;
         border-right: 1px solid ${props => props.theme.palette.border.secondary};
+
+        .text {
+            display: flex;
+        }
     }
 `;
 
 const StyledNavLink = styled(NavLink)`
     text-decoration: none;
     font-size: 1.5rem;
-    padding: 1rem;
-    margin-top: 1rem;
     color: ${props => props.theme.palette.txt.main};
-    
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    transition: all .2s;
+
+    .text {
+        display: none;
+    }
+
     &:hover {
         color: ${props => props.theme.palette.txt.select};
     }
@@ -49,41 +61,57 @@ const SidebarDiv = styled.div`
     background-color: ${props => props.theme.palette.border.primary};
 `;
 
-
 const Sidebar = () => {
+    const [isHovered, setHovered] = useState(false);
+
     return (
-        <SidebarContainer>
+        <SidebarContainer onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <ul>
                 <li>
-                    <StyledNavLink to='/'>Home</StyledNavLink>
+                    <StyledNavLink to='/' className="text">
+                        <HomeOutlinedIcon />
+                        <span className="text">Home</span>
+                    </StyledNavLink>
                 </li>
 
                 <SidebarDiv /> 
 
                 <li>
-                    <StyledNavLink to='/Cpt'>Cpt</StyledNavLink>
+                    <StyledNavLink to='/Cpt' className="text">
+                        Cpt
+                    </StyledNavLink>
                 </li>
                 <li>
-                    <StyledNavLink to='/Nitro'>Nitro</StyledNavLink>
+                    <StyledNavLink to='/Nitro' className="text">
+                        Nitro
+                    </StyledNavLink>
                 </li>
                 <li>
-                    <StyledNavLink to='/Oji'>Oji</StyledNavLink>
+                    <StyledNavLink to='/Oji' className="text">
+                        Oji 
+                    </StyledNavLink>
                 </li>
 
                 <SidebarDiv /> 
 
                 <li>
-                    <StyledNavLink to='/Contato'>Contato</StyledNavLink>
+                    <StyledNavLink to='/Contato' className="text">
+                        <PhoneDisabledOutlinedIcon />
+                        <span className="text">Contato</span>
+                    </StyledNavLink>
                 </li>
 
                 <SidebarDiv /> 
 
                 <li>
-                    <StyledNavLink to='/theme-change'>Temas</StyledNavLink>
+                    <StyledNavLink to='/theme-change'>
+                        <FormatPaintIcon />
+                        <span className="text">Temas</span>
+                    </StyledNavLink>
                 </li>
             </ul>
         </SidebarContainer>
-  )
+    )
 }
 
-export default Sidebar
+export default Sidebar;
