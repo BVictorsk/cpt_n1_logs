@@ -97,13 +97,13 @@ const Cpt = () => {
           <h2>Procedimento - Criação de Acessos CPT</h2>
           <ul>
             <li>
-              <a href="https://wiki1.computecnica.com.br/books/nivel-1-nDG/page/criacao-de-acessos-clt-e-estagiario">
+              <a href="https://wiki1.computecnica.com.br/books/nivel-1-nDG/page/criacao-de-acessos-clt-e-estagiario" target='_blank'>
               <LiBorder/>
               <p>Criação de Acessos (CLT e Estagiário)</p>
               </a>
             </li>
             <li>
-              <a href="https://wiki1.computecnica.com.br/books/nivel-1-nDG/page/criacao-de-acessos-pj-empresa-terceira">
+              <a href="https://wiki1.computecnica.com.br/books/nivel-1-nDG/page/criacao-de-acessos-pj-empresa-terceira" target='_blank'>
               <LiBorder/>
               <p>Criação de Acessos (PJ/terceiro)</p>
               </a>
@@ -114,13 +114,13 @@ const Cpt = () => {
           <h2>Procedimento - Desativação de Acessos CPT</h2>
             <ul>
               <li>
-                <a href="https://wiki1.computecnica.com.br/books/nivel-1-nDG/page/desativacao-de-acessos-ad-e-mail-e-desk-manager">
+                <a href="https://wiki1.computecnica.com.br/books/nivel-1-nDG/page/desativacao-de-acessos-ad-e-mail-e-desk-manager" target='_blank'>
                   <LiBorder/>
                   <p>Desativação de acessos</p>
                 </a>
               </li>
               <li>
-                <a href="https://wiki1.computecnica.com.br/books/nivel-1-nDG/page/desativacao-de-acessos-redirect-de-e-mail">
+                <a href="https://wiki1.computecnica.com.br/books/nivel-1-nDG/page/desativacao-de-acessos-redirect-de-e-mail" target='_blank'>
                   <LiBorder/>
                   <p>Redirect de E-mail</p>
                 </a>
