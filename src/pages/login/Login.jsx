@@ -63,13 +63,16 @@ const Login = ({ onLogin }) => {
   const handleLogin = () => {
     const { username, password } = loginData;
 
-    if (authenticateUser(username, password)) {
-      localStorage.setItem('authenticatedUser', JSON.stringify({ login: username }));
-      onLogin(); // Chama a função de callback passada por props para indicar que o usuário está autenticado
+    const authenticatedUser = authenticateUser(username, password);
+
+    if (authenticatedUser) {
+      localStorage.setItem('authenticatedUser', JSON.stringify(authenticatedUser));
+      onLogin();
     } else {
       alert('Credenciais inválidas. Tente novamente.');
     }
   };
+
 
   return (
 

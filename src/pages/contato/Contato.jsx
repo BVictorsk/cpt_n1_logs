@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-
+import CopyButton from '../../components/copy/CopyButton';
+import { getAuthenticatedUser } from '../../components/auth/AuthProvider';
 
 const ContatoContainer = styled.div`
     background-color: ${props => props.theme.palette.background.main};  
@@ -188,6 +189,10 @@ const Contato = () => {
   const [ticket, setTicket] = useState("");
   const [selectedRadio, setSelectedRadio] = useState(null);
 
+  const authenticatedUser = getAuthenticatedUser();
+  const username = authenticatedUser ? authenticatedUser.username : '';
+  
+
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
@@ -213,6 +218,7 @@ const Contato = () => {
     setSelectedRadio(event.target.value);
   };
 
+
   // Lógica para exibir o texto específico com base na escolha do rádio
   const getNumeroText = () => {
     if (selectedRadio === 'nitro') {
@@ -223,24 +229,34 @@ const Contato = () => {
     return ''; // Retorne uma string vazia se nenhum rádio estiver selecionado
   };
 
-//   // contato sem sucesso
-//   const txt1 = `${solicitante}!
-                  //Foi realizada tentativa de contato no numero: {contato}
-                  //Solicitamos que, por gentileza, entre em contato com o Helpdesk assim que possível //atraves dos numeros abaixo:
-                  //{getNumeroText()}.
-                  //Atenciosamente,`;
-// // sem numero para contato
-//   const txt2 =                   <p> ${greetings} {solicitante}!</p>
-//Não identificamos nenhum telefone para contato.
-//Solicitamos que, por gentileza, entre em contato com o Helpdesk assim que possível atraves dos numeros abaixo:
-//{getNumeroText()}.
-//Atenciosamente,`:
+//contato sem sucesso
+const txt1 = `${greetings} ${solicitante}!
 
-// // contato teams
-//   const txt3 =  `                  <p> ${greetings} {solicitante}!
-                  //Aqui quem fala é o analista do helpdesk.
-                  //Motivo do meu contato, é referente ao chamado de numero: {ticket}.
-                  //Podemos realizar atendimento?`;
+Foi realizada tentativa de contato no numero: ${contato}
+
+Solicitamos que, por gentileza, entre em contato com o Helpdesk assim que possível atraves dos numeros abaixo:
+${getNumeroText()}.
+
+Atenciosamente,`;
+
+//sem numero para contato
+const txt2 = `${greetings} ${solicitante}!</p>
+
+Não identificamos nenhum telefone para contato.
+
+Solicitamos que, por gentileza, entre em contato com o Helpdesk assim que possível atraves dos numeros abaixo:
+${getNumeroText()}.
+
+Atenciosamente,`;
+
+//contato teams
+const txt3 =  `${greetings} ${solicitante}!
+
+Aqui quem fala é o ${username} do helpdesk.
+
+Motivo do meu contato, é referente ao chamado de numero: ${ticket}.
+
+Podemos realizar atendimento?`;
 
 
 
@@ -328,6 +344,9 @@ const Contato = () => {
                   <p>Atenciosamente,</p>
                 </TextContainer>
               </TabOrganizer>
+              <TabOrganizer>
+                <CopyButton text={txt1} />
+              </TabOrganizer>
             </Tab1>
           </p>
           <p id="two" style={{ display: activeTab === 'two' ? 'block' : 'none' }}>
@@ -371,6 +390,9 @@ const Contato = () => {
                   <p>Atenciosamente,</p>
                 </TextContainer>
               </TabOrganizer>
+              <TabOrganizer>
+                <CopyButton text={txt2} />
+              </TabOrganizer>
             </Tab2>
           </p>
           <p id="three" style={{ display: activeTab === 'three' ? 'block' : 'none' }}>
@@ -393,34 +415,16 @@ const Contato = () => {
                 onChange={(event) => setTicket(event.target.value)} 
                 />
               </TabOrganizer>
-              <RadioContainer>
-                <li>
-                  <label htmlFor="">Nitro: </label>
-                  <input 
-                  type="radio" 
-                  name="contactType" 
-                  value="nitro"
-                  onChange={handleRadioChange}
-                  />
-                </li>
-
-                <li>
-                  <label htmlFor="">Oji: </label>
-                  <input 
-                  type="radio" 
-                  name="contactType"
-                  value="oji"
-                  onChange={handleRadioChange} 
-                  />
-                </li>
-              </RadioContainer>
               <TabOrganizer>
                 <TextContainer>
                   <p> {greetings} {solicitante}!</p>
-                  <p>Aqui quem fala é o analista do helpdesk.</p>
+                  <p>Aqui quem fala é o {username} do helpdesk.</p>
                   <p>Motivo do meu contato, é referente ao chamado de numero: {ticket}.</p>
                   <p>Podemos realizar atendimento?</p>
                 </TextContainer>
+              </TabOrganizer>
+              <TabOrganizer>
+                <CopyButton text={txt3} />
               </TabOrganizer>
             </Tab3>
           </p>
