@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 import FormatPaintIcon from '@mui/icons-material/FormatPaint';
@@ -61,8 +61,14 @@ const SidebarDiv = styled.div`
     background-color: ${props => props.theme.palette.border.primary};
 `;
 
-const Sidebar = () => {
+const Sidebar = ({ themeChanged, setThemeChanged }) => {
     const [isHovered, setHovered] = useState(false);
+
+    useEffect(() => {
+        if (themeChanged) {
+            window.location.reload();
+        }
+      }, [themeChanged, setThemeChanged]);
 
     return (
         <SidebarContainer onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>

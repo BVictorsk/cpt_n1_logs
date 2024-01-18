@@ -14,26 +14,32 @@ import Login from "./pages/login/Login";
 
 
 function App() {
-  const [selectedTheme, setSelectedTheme] = useState(() => {
-    // Tenta obter o tema do localStorage
-    const storedTheme = localStorage.getItem('selectedTheme');
-    // Se existir, retorna o tema armazenado, senão retorna o tema padrão (nightTheme)
-    return storedTheme ? JSON.parse(storedTheme) : nightTheme;
-  });
-
+  // login
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     // Verifica se há informações de autenticação armazenadas no localStorage
     const authenticatedUser = localStorage.getItem('authenticatedUser');
     return authenticatedUser ? true : false;
   });
 
-  const changeTheme = (theme) => {
-    setSelectedTheme(theme);
-  };
-
   const handleLogin = () => {
     setIsAuthenticated(true);
   };
+
+  // temas
+  const [selectedTheme, setSelectedTheme] = useState(() => {
+    // Tenta obter o tema do localStorage
+    const storedTheme = localStorage.getItem('selectedTheme');
+    // Se existir, retorna o tema armazenado, senão retorna o tema padrão (nightTheme)
+    return storedTheme ? JSON.parse(storedTheme) : nightTheme;
+  });
+  
+  const [themeChanged, setThemeChanged] = useState(false);
+
+  const changeTheme = (theme) => {
+    setSelectedTheme(theme);
+    setThemeChanged(true);
+  };  
+
   
   // Efeito para salvar o tema no localStorage sempre que o tema é alterado
   useEffect(() => {
@@ -47,7 +53,7 @@ function App() {
         <Router class="app">
           {isAuthenticated ? (
             <div className="app-container">
-              <Sidebar />
+              <Sidebar themeChanged={themeChanged} setThemeChanged={setThemeChanged}/>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="theme-change" element={<ThemeSelect changeTheme={changeTheme} />} />
