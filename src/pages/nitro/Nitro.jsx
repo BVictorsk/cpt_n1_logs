@@ -103,7 +103,7 @@ const Nitro = () => {
     <NitroContainer>
       <CardsContainer>
         <CardsCpt>
-          <h2>Procedimento - Criação de Acessos CPT</h2>
+          <h2>Procedimento - Criação de Acessos Nitro</h2>
           <ul>
             <li>
               <LiBorder/>
