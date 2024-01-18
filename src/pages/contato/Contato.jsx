@@ -418,7 +418,7 @@ Podemos realizar atendimento?`;
               <TabOrganizer>
                 <TextContainer>
                   <p> {greetings} {solicitante}!</p>
-                  <p>Aqui quem fala é o ${username} do helpdesk.</p>
+                  <p>Aqui quem fala é o {username} do helpdesk.</p>
                   <p>Motivo do meu contato, é referente ao chamado de numero: {ticket}.</p>
                   <p>Podemos realizar atendimento?</p>
                 </TextContainer>
