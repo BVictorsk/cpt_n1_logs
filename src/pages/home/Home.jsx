@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 const HomeContainer = styled.div`
     background-color: ${props => props.theme.palette.background.main};
-    flex: 20;
+    width: 100%;
     height: 100vh;
     transition: all 0.3s;
     display: flex;

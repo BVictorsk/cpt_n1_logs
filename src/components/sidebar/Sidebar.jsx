@@ -6,11 +6,12 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PhoneDisabledOutlinedIcon from '@mui/icons-material/PhoneDisabledOutlined';
 
 const SidebarContainer = styled.div`
+    position: fixed;
     background: ${props => props.theme.palette.sidebar.main};  
-    flex: 1;
+    width: 4%;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
     transition: all 0.3s;
     border-right: 2px solid ${props => props.theme.palette.border.primary};
 
@@ -27,7 +28,7 @@ const SidebarContainer = styled.div`
     }
 
     &:hover {
-        flex: 2;
+        width: 9%;
         border-right: 1px solid ${props => props.theme.palette.border.secondary};
 
         .text {
