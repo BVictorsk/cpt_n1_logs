@@ -81,6 +81,7 @@ const CreateCLT = () => {
   const handleEnviarClick = () => {
     const email1 = 'email1@outlook.com';
     const email2 = 'email2@outlook.com';
+    const email3 = 'email3@outlook.com'; // Novo e-mail adicionado
   
     const emailSubject = 'Informações do Colaborador';
     const emailBody = `
@@ -93,9 +94,10 @@ const CreateCLT = () => {
     // Monta os links para os e-mails
     const mailtoLink1 = `mailto:${email1}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     const mailtoLink2 = `mailto:${email2}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink3 = `mailto:${email3}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
   
     // Abre os clientes de e-mail padrão com as informações preenchidas
-    window.location.href = `${mailtoLink1}&cc=${mailtoLink2}`;
+    window.location.href = `${mailtoLink1}&cc=${email2},${email3}`;
   };
 
   return (
