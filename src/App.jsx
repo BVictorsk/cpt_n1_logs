@@ -60,7 +60,7 @@ function App() {
                 <Route path="/Cpt" element={<Cpt />} />
                 <Route path="/Nitro" element={<Nitro />} />
                 <Route path="/Oji" element={<Oji />} />
-                <Route path="/Contato" element={<Contato />} />
+                <Route path="/Contato-logs" element={<Contato />} />
               </Routes>
             </div>
           ) : (

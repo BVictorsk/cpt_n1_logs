@@ -11,6 +11,7 @@ const ContatoContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
 `;
 
 const WrapContainer = styled.div`
@@ -67,7 +68,7 @@ const WrapContainer = styled.div`
   ul.tabs li a.active {
   margin: 5px 0 0 0;
   padding: 10px 0 10px 0;
-  background: ${props => props.theme.palette.border.primary};
+  background: ${props => props.theme.palette.background.buttonHover};
   color: ${props => props.theme.palette.background.main};  
   z-index: 4;
   outline: none;
@@ -99,7 +100,7 @@ const WrapContainer = styled.div`
   p{
   font-family: 'Open Sans', sans-serif;
   padding: 30px 40px;
-  color: ${props => props.theme.palette.txt.white};;
+  color: ${props => props.theme.palette.txt.white};
   line-height: 26px;
   font-size: 18px;
   margin: 0;
@@ -142,10 +143,20 @@ const TabOrganizer = styled.div`
 
         input {
           padding: .5rem;
+          background-color: ${props => props.theme.palette.background.main};
+          color: ${props => props.theme.palette.txt.white};
+          border: 1px solid ${props => props.theme.palette.border.primary};
+          border-radius: .4rem;
+
+          &:hover {
+            border: 1px solid ${props => props.theme.palette.border.secondary};
+            border-radius: .5rem;
+          }
         }
+
 `;
 
-const RadioContainer = styled.ul`
+const CBContainer = styled.ul`
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -158,14 +169,14 @@ const RadioContainer = styled.ul`
     width: 17rem;
 
     label {
+      display: flex;
+      align-items: center;
       margin-right: 1rem;
-    }
-
-    input {  // Corrected from input-text to input
-      margin-right: 10rem;
+      cursor: pointer;
     }
   }
 `;
+
 const TextContainer = styled.div`
         width: 100%;
         height: 13rem;
@@ -182,12 +193,13 @@ const TextContainer = styled.div`
 
 
 const Contato = () => {
-  const [activeTab, setActiveTab] = useState('one');
+  const [activeTab, setActiveTab] = useState('contato');
   const [solicitante, setSolicitante] = useState("");
   const [greetings, setGreetings] = useState("");
   const [contato, setContato] = useState("");
   const [ticket, setTicket] = useState("");
-  const [selectedRadio, setSelectedRadio] = useState(null);
+  const [selectedCheckbox, setSelectedCheckbox] = useState(null);
+  
 
   const authenticatedUser = getAuthenticatedUser();
   const username = authenticatedUser ? authenticatedUser.username : '';
@@ -214,16 +226,21 @@ const Contato = () => {
     }
   }, []);
 
-  const handleRadioChange = (event) => {
-    setSelectedRadio(event.target.value);
+  const handleCheckboxChange = (event) => {
+    const selectedValue = event.target.value;
+  
+    // Se a checkbox selecionada for a mesma que já está selecionada, desmarque-a
+    setSelectedCheckbox((prevSelected) =>
+      prevSelected === selectedValue ? null : selectedValue
+    );
   };
 
 
   // Lógica para exibir o texto específico com base na escolha do rádio
   const getNumeroText = () => {
-    if (selectedRadio === 'nitro') {
+    if (selectedCheckbox === 'nitro') {
       return '(11) 2134-9011 /(11) 2147-6459';
-    } else if (selectedRadio === 'oji') {
+    } else if (selectedCheckbox === 'oji') {
       return '(11) 2134-9024 / (11) 2147-6462';
     }
     return ''; // Retorne uma string vazia se nenhum rádio estiver selecionado
@@ -266,27 +283,27 @@ Podemos realizar atendimento?`;
         <ul className="tabs group">
           <li>
             <a
-              className={activeTab === 'one' ? 'active' : ''}
-              href="#/one"
-              onClick={() => handleTabClick('one')}
+              className={activeTab === 'contato' ? 'active' : ''}
+              href="#/contato"
+              onClick={() => handleTabClick('contato')}
             >
               Contato
             </a>
           </li>
           <li>
             <a
-              className={activeTab === 'two' ? 'active' : ''}
-              href="#/two"
-              onClick={() => handleTabClick('two')}
+              className={activeTab === 'sem-contato' ? 'active' : ''}
+              href="#/sem-contato"
+              onClick={() => handleTabClick('sem-contato')}
             >
               Sem Contato
             </a>
           </li>
           <li>
             <a
-              className={activeTab === 'three' ? 'active' : ''}
-              href="#/three"
-              onClick={() => handleTabClick('three')}
+              className={activeTab === 'teams' ? 'active' : ''}
+              href="#/teams"
+              onClick={() => handleTabClick('teams')}
             >
               Teams
             </a>
@@ -294,7 +311,7 @@ Podemos realizar atendimento?`;
         </ul>
 
         <div id="content" className="content">
-          <p id="one" style={{ display: activeTab === 'one' ? 'block' : 'none' }}>
+          <p id="one" style={{ display: activeTab === 'contato' ? 'block' : 'none' }}>
             <Tab1>
               <TabOrganizer>
                 <label htmlFor="solicitante">Nome do Solicitante: </label>
@@ -314,27 +331,31 @@ Podemos realizar atendimento?`;
                 onChange={(event) => setContato(event.target.value)} 
                 />
               </TabOrganizer>
-              <RadioContainer>
+              <CBContainer isSelected={selectedCheckbox === 'nitro' || selectedCheckbox === 'oji'}>
                 <li>
                   <label htmlFor="">Nitro: </label>
-                  <input 
-                  type="radio" 
-                  name="contactType" 
-                  value="nitro"
-                  onChange={handleRadioChange}
+                  <input
+                    type="checkbox"
+                    name="contactType"
+                    value="nitro"
+                    onChange={handleCheckboxChange}
+                    checked={selectedCheckbox === 'nitro'}
+                    className='custom-checkbox'
                   />
                 </li>
 
                 <li>
                   <label htmlFor="">Oji: </label>
-                  <input 
-                  type="radio" 
-                  name="contactType"
-                  value="oji"
-                  onChange={handleRadioChange} 
+                  <input
+                    type="checkbox"
+                    name="contactType"
+                    value="oji"
+                    onChange={handleCheckboxChange}
+                    checked={selectedCheckbox === 'oji'}
+                    className='custom-checkbox'
                   />
                 </li>
-              </RadioContainer>
+              </CBContainer>
               <TabOrganizer>
                 <TextContainer>
                   <p> {greetings} {solicitante}!</p>
@@ -349,7 +370,7 @@ Podemos realizar atendimento?`;
               </TabOrganizer>
             </Tab1>
           </p>
-          <p id="two" style={{ display: activeTab === 'two' ? 'block' : 'none' }}>
+          <p id="two" style={{ display: activeTab === 'sem-contato' ? 'block' : 'none' }}>
           <Tab2>
               <TabOrganizer>
                 <label htmlFor="solicitante">Nome do Solicitante: </label>
@@ -360,27 +381,31 @@ Podemos realizar atendimento?`;
                 onChange={(event) => setSolicitante(event.target.value)} 
                 />
               </TabOrganizer>
-              <RadioContainer>
+              <CBContainer isSelected={selectedCheckbox === 'nitro' || selectedCheckbox === 'oji'}>
                 <li>
                   <label htmlFor="">Nitro: </label>
-                  <input 
-                  type="radio" 
-                  name="contactType" 
-                  value="nitro"
-                  onChange={handleRadioChange}
+                  <input
+                    type="checkbox"
+                    name="contactType"
+                    value="nitro"
+                    onChange={handleCheckboxChange}
+                    checked={selectedCheckbox === 'nitro'}
+                    className='input-color'
                   />
                 </li>
 
                 <li>
                   <label htmlFor="">Oji: </label>
-                  <input 
-                  type="radio" 
-                  name="contactType"
-                  value="oji"
-                  onChange={handleRadioChange} 
+                  <input
+                    type="checkbox"
+                    name="contactType"
+                    value="oji"
+                    onChange={handleCheckboxChange}
+                    checked={selectedCheckbox === 'oji'}
+                    className='input-color'
                   />
                 </li>
-              </RadioContainer>
+              </CBContainer>
               <TabOrganizer>
                 <TextContainer>
                   <p> {greetings} {solicitante}!</p>
@@ -395,7 +420,7 @@ Podemos realizar atendimento?`;
               </TabOrganizer>
             </Tab2>
           </p>
-          <p id="three" style={{ display: activeTab === 'three' ? 'block' : 'none' }}>
+          <p id="three" style={{ display: activeTab === 'teams' ? 'block' : 'none' }}>
           <Tab3>
               <TabOrganizer>
                 <label htmlFor="solicitante">Nome do Solicitante: </label>

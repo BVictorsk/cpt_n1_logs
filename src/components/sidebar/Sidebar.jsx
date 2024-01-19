@@ -101,7 +101,7 @@ const Sidebar = ({ themeChanged, setThemeChanged }) => {
                 <SidebarDiv /> 
 
                 <li>
-                    <StyledNavLink to='/Contato' className="text">
+                    <StyledNavLink to='/Contato-Logs' className="text">
                         <PhoneDisabledOutlinedIcon />
                         <span className="text">Contato</span>
                     </StyledNavLink>
