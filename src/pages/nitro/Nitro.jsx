@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 const NitroContainer = styled.div`;
     background-color: ${props => props.theme.palette.background.main};    
@@ -97,6 +98,24 @@ const LiBorder = styled.div`;
     margin: 2px;
 `;
 
+const StyledNavLink = styled(NavLink)`
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: ${props => props.theme.palette.txt.main};
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    transition: all .2s;
+
+    .text {
+        display: none;
+    }
+
+    &:hover {
+        color: ${props => props.theme.palette.txt.select};
+    }
+`;
+
 
 const Nitro = () => {
   return (
@@ -107,7 +126,9 @@ const Nitro = () => {
           <ul>
             <li>
               <LiBorder/>
-              <p>Criação de Acessos (CLT)</p>
+              <StyledNavLink to='/Nitro/criacao/CLT'>
+                <p>Criação de Acessos (CLT)</p>
+              </StyledNavLink>
             </li>
             <li>
               <LiBorder/>

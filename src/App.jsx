@@ -11,6 +11,7 @@ import Nitro from "./pages/nitro/Nitro";
 import Oji from "./pages/oji/Oji";
 import Contato from "./pages/contato/Contato";
 import Login from "./pages/login/Login";
+import CreateCLT from "./pages/nitro/criações/CreateCLT";
 
 
 function App() {
@@ -59,6 +60,11 @@ function App() {
                 <Route path="theme-change" element={<ThemeSelect changeTheme={changeTheme} />} />
                 <Route path="/Cpt" element={<Cpt />} />
                 <Route path="/Nitro" element={<Nitro />} />
+                <Route path="/Nitro/criacao/CLT" element={<CreateCLT />} />
+                <Route path="/Nitro/criacao/Estagiario" element={<Nitro />} />
+                <Route path="/Nitro/criacao/Aprendiz" element={<Nitro />} />
+                <Route path="/Nitro/criacao/PJ" element={<Nitro />} />
+                <Route path="/Nitro/criacao/RTV" element={<Nitro />} />
                 <Route path="/Oji" element={<Oji />} />
                 <Route path="/Contato-logs" element={<Contato />} />
               </Routes>
