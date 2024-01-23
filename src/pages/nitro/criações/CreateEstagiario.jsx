@@ -158,7 +158,7 @@ const ProcedureContainer = styled.div`
   }
 `;
 
-const CreateCLT = () => {
+const CreateEstagiario = () => {
   const [colaborador, setColaborador] = useState({
     nome: '',
     gestor: '',
@@ -229,22 +229,22 @@ const CreateCLT = () => {
 Prezados,
 
 Acesso criado conforme solicitação ${colaborador.chamado} - Nitro - TI - Acessos - Novo 
-Colaborador - CLT
+Colaborador - Estagiário
 
 Nome Completo: ${formattedCollaboratorName}
 
 Acesso ao Ambiente Nitro
-User Nitro: ${createUsername()}
+User Nitro: est.${createUsername()}
 Senha: ${nitroPassword()}
 
 Acesso Email
-User Login: ${createUsername()}@nitroquimica.com.br
-Nome caixa de e-mail: ${createEmail()}
+User Login: est.${createUsername()}@nitroquimica.com.br
+Nome caixa de e-mail: est.${createEmail()}
 Senha: ${nitroPassword()}
 Link de acesso Aplicativos Office: 
 
 Plataforma de Chamados
-Login Desk Manager: ${createEmail()}
+Login Desk Manager: est.${createEmail()}
 Senha: ${nitroPassword()}
 Link de acesso Desk Manager: 
 
@@ -276,7 +276,7 @@ Atenciosamente,
         </FormWrap>
       </FormContainer>
       <ProcedureContainer>
-        <h2>Criação de Acessos (CLT)</h2>
+        <h2>Criação de Acessos (Estagiário)</h2>
         <h3>Procedimento</h3>
         <p><strong>1°</strong> Acesse um dos ADs NQSPV010 ou NQSPV011 </p>
         <p><strong>2°</strong> Abra o Active Directory Users and Computers: </p>
@@ -295,9 +295,9 @@ Atenciosamente,
         </div>
         <p><strong>5°</strong> Preencha o Formulário a seguir:   </p>
         <p>Nome do colaborador: {colaborador.nome} </p>
-        <p>Usuário deve ser criado com o primeiro nome + iniciais do sobrenome: {createUsername()}</p>
+        <p>Usuário deve ser criado com o primeiro nome + iniciais do sobrenome: est.{createUsername()}</p>
         <br />
-        <p className='txt-menor'><strong>NOTA: Para Logins homônimos (Ou seja, que possuem o mesmo nome), utilize a segunda letra do último sobrenome no final para diferenciá-los: ex: Paulo Henrique Messias = paulohme</strong></p>
+        <p className='txt-menor'><strong>NOTA: Para Logins homônimos (Ou seja, que possuem o mesmo nome), utilize a segunda letra do último sobrenome no final para diferenciá-los: ex: Paulo Henrique Messias = est.paulohme</strong></p>
         <div className="img-container">
           <img src={imagenitro4} alt="nitroimg4" />
         </div>
@@ -323,7 +323,7 @@ Atenciosamente,
           <img src={imagenitro6} alt="nitroimg6" />
         </div>
 
-        <p><strong>E-mail sendo este o padrão para inclusão: nome.sobrenome@nitro.com.br (Exceto Patos de Minas  nome.sobrenome@nbtsa.com.br)</strong></p>
+        <p><strong>E-mail sendo este o padrão para inclusão: nome.sobrenome@nitro.com.br (Exceto Patos de Minas est.nome.sobrenome@nbtsa.com.br)</strong></p>
         <br />
         <p><strong>7º – Inserir Informações no Campo Organização / Organization </strong></p>
         <br />
@@ -426,7 +426,7 @@ Atenciosamente,
 
         <p>O campo <strong>Alias</strong> deve ser preenchido com todas as letras minúsculas conforme exemplo e regras abaixo.</p>
         <br />
-        <p><strong>Funcionário Efetivo (CLT)</strong></p>
+        <p><strong>Funcionário Efetivo (Estagiário)</strong></p>
         <p>- Nome Completo: {colaborador.nome}</p>
         <p>- E-mail: {createEmail()}</p>
         <p>No caso de duplicidade, utilizar outro sobrenome do colaborador</p>
@@ -515,7 +515,7 @@ Atenciosamente,
           <br />
           <p>Prezados,</p>
           <br />
-          <p>Acesso criado conforme solicitação {colaborador.chamado} - Nitro - TI - Acessos - Novo Colaborador - CLT</p>
+          <p>Acesso criado conforme solicitação {colaborador.chamado} - Nitro - TI - Acessos - Novo Colaborador - Estagiário</p>
           <br />
           <p><strong>Nome Completo:</strong> {colaborador.nome}</p>
           <br />
@@ -549,4 +549,4 @@ Atenciosamente,
   );
 };
 
-export default CreateCLT;
+export default CreateEstagiario;
