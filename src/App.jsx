@@ -13,6 +13,7 @@ import Contato from "./pages/contato/Contato";
 import Login from "./pages/login/Login";
 import CreateCLT from "./pages/nitro/criações/CreateCLT";
 import CreateEstagiario from "./pages/nitro/criações/CreateEstagiario";
+import CreateAprendiz from "./pages/nitro/criações/CreateAprendiz";
 
 
 function App() {
@@ -63,7 +64,7 @@ function App() {
                 <Route path="/Nitro" element={<Nitro />} />
                 <Route path="/Nitro/criacao/CLT" element={<CreateCLT />} />
                 <Route path="/Nitro/criacao/Estagiario" element={<CreateEstagiario />} />
-                <Route path="/Nitro/criacao/Aprendiz" element={<Nitro />} />
+                <Route path="/Nitro/criacao/Aprendiz" element={<CreateAprendiz />} />
                 <Route path="/Nitro/criacao/PJ" element={<Nitro />} />
                 <Route path="/Nitro/criacao/RTV" element={<Nitro />} />
                 <Route path="/Oji" element={<Oji />} />

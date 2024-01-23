@@ -138,7 +138,9 @@ const Nitro = () => {
             </li>
             <li>
               <LiBorder/>
-              <p>Criação de Acessos (Aprendiz)</p>
+              <StyledNavLink to='/Nitro/criacao/Aprendiz'>
+                <p>Criação de Acessos (Aprendiz)</p>
+              </StyledNavLink>
             </li>
             <li>
               <LiBorder/>

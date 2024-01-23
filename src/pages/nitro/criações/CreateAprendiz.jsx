@@ -3,25 +3,26 @@ import styled from '@emotion/styled';
 import imagenitro1 from '../../../assets/pci1.png'
 import imagenitro2 from '../../../assets/pci2.png'
 import imagenitro3 from '../../../assets/pci3.png'
-import imagenitro4 from '../../../assets/esti1.png'
+import imagenitro4 from '../../../assets/apri1.png'
 import imagenitro5 from '../../../assets/pci5.png'
-import imagenitro6 from '../../../assets/esti2.png'
-import imagenitro7 from '../../../assets/esti3.png'
-import imagenitro8 from '../../../assets/esti4.png'
-import imagenitro9 from '../../../assets/pci9.png'
-import imagenitro10 from '../../../assets/esti5.png'
-import imagenitro11 from '../../../assets/pci11.png'
+import imagenitro6 from '../../../assets/apri2.png'
+import imagenitro7 from '../../../assets/pci7.png'
+import imagenitro8 from '../../../assets/apri3.png'
+import imagenitro9 from '../../../assets/apri4.png'
+import imagenitro10 from '../../../assets/pci10.png'
+import imagenitro11 from '../../../assets/apri5.png'
 import imagenitro12 from '../../../assets/pci12.png'
 import imagenitro13 from '../../../assets/pci13.png'
 import imagenitro14 from '../../../assets/pci14.png'
 import imagenitro15 from '../../../assets/pci15.png'
-import imagenitro16 from '../../../assets/esti6.png'
-import imagenitro17 from '../../../assets/esti7.png'
-import imagenitro18 from '../../../assets/pci18.png'
+import imagenitro16 from '../../../assets/pci16.png'
+import imagenitro17 from '../../../assets/apri6.png'
+import imagenitro18 from '../../../assets/apri7.png'
 import imagenitro19 from '../../../assets/pci19.png'
 import imagenitro20 from '../../../assets/pci20.png'
 import imagenitro21 from '../../../assets/pci21.png'
 import imagenitro22 from '../../../assets/pci22.png'
+
 
 const CreationContainer = styled.div`
     background-color: ${props => props.theme.palette.background.main};    
@@ -158,7 +159,7 @@ const ProcedureContainer = styled.div`
   }
 `;
 
-const CreateEstagiario = () => {
+const CreateAprendiz = () => {
   const [colaborador, setColaborador] = useState({
     nome: '',
     gestor: '',
@@ -233,17 +234,17 @@ Colaborador - Estagiário
 Nome Completo: ${formattedCollaboratorName}
 
 Acesso ao Ambiente Nitro
-User Nitro: est.${createUsername()}
+User Nitro: apr.${createUsername()}
 Senha: ${nitroPassword()}
 
 Acesso Email
-User Login: est.${createUsername()}@nitroquimica.com.br
-Nome caixa de e-mail: est.${createEmail()}
+User Login: apr.${createUsername()}@nitroquimica.com.br
+Nome caixa de e-mail: apr.${createEmail()}
 Senha: ${nitroPassword()}
 Link de acesso Aplicativos Office: 
 
 Plataforma de Chamados
-Login Desk Manager: est.${createEmail()}
+Login Desk Manager: apr.${createEmail()}
 Senha: ${nitroPassword()}
 Link de acesso Desk Manager: 
 
@@ -294,9 +295,9 @@ Atenciosamente,
         </div>
         <p><strong>5°</strong> Preencha o Formulário a seguir:   </p>
         <p>Nome do colaborador: {colaborador.nome} </p>
-        <p>Usuário deve ser criado com o primeiro nome + iniciais do sobrenome: est.{createUsername()}</p>
+        <p>Usuário deve ser criado com o primeiro nome + iniciais do sobrenome: apr.{createUsername()}</p>
         <br />
-        <p className='txt-menor'><strong>NOTA: Para Logins homônimos (Ou seja, que possuem o mesmo nome), utilize a segunda letra do último sobrenome no final para diferenciá-los: ex: Paulo Henrique Messias = est.paulohme</strong></p>
+        <p className='txt-menor'><strong>NOTA: Para Logins homônimos (Ou seja, que possuem o mesmo nome), utilize a segunda letra do último sobrenome no final para diferenciá-los: ex: Paulo Henrique Messias = apr.paulohme</strong></p>
         <div className="img-container">
           <img src={imagenitro4} alt="nitroimg4" />
         </div>
@@ -427,7 +428,7 @@ Atenciosamente,
         <br />
         <p><strong>Funcionário Efetivo (Estagiário)</strong></p>
         <p>- Nome Completo: {colaborador.nome}</p>
-        <p>- E-mail: est.{createEmail()}</p>
+        <p>- E-mail: apr.{createEmail()}</p>
         <p>No caso de duplicidade, utilizar outro sobrenome do colaborador</p>
         <br />
         <p><strong>Obs¹.: Nunca autilizar número em Login de rede e E-mail </strong></p>
@@ -519,17 +520,17 @@ Atenciosamente,
           <p><strong>Nome Completo:</strong> {colaborador.nome}</p>
           <br />
           <p><strong>Acesso ao Ambiente Nitro</strong></p>
-          <p>User Nitro: est.{createUsername()}</p>
+          <p>User Nitro: apr.{createUsername()}</p>
           <p>Senha: {nitroPassword()}</p>
           <br />
           <p><strong>Acesso Email</strong></p>
-          <p>user Login: est.{createUsername()}@nitroquimica.com.br</p>
-          <p>Nome caixa de e-mail: est.{createEmail()}@nitro.com.br</p>
+          <p>user Login: apr.{createUsername()}@nitroquimica.com.br</p>
+          <p>Nome caixa de e-mail: apr.{createEmail()}@nitro.com.br</p>
           <p>Senha: {nitroPassword()}</p>
           <p>Link de acesso Aplicativos Office: <a href="https://www.office.com/">https://www.office.com/</a></p>
           <br />
           <p><strong>Plataforma de Chamados</strong></p>
-          <p>Login Desk Manager: est.{createEmail()}@nitro.com.br</p>
+          <p>Login Desk Manager: apr.{createEmail()}@nitro.com.br</p>
           <p>Senha: {nitroPassword()}</p>
           <p>Link de Acesso Desk Manager: <a href="https://computecnica.desk.ms/?LoginPortal">https://computecnica.desk.ms/?LoginPortal</a></p>
           <br />
@@ -548,4 +549,4 @@ Atenciosamente,
   );
 };
 
-export default CreateEstagiario;
+export default CreateAprendiz;
