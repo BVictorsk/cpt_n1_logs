@@ -483,7 +483,7 @@ aplicar o papel de parede sempre que ele logar em algum computador na rede.</p>
           <br />
           <p>Acesso criado conforme solicitação {colaborador.chamado} - Nitro - TI - Acessos - Novo Colaborador - CLT</p>
           <br />
-          <p><strong>Nome Completo:</strong> {nome.colaborador}</p>
+          <p><strong>Nome Completo:</strong> {colaborador.nome}</p>
           <br />
           <p><strong>Acesso ao Ambiente Nitro</strong></p>
           <p>User Nitro: {createUsername()}</p>
