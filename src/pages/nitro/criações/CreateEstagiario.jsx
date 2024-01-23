@@ -225,8 +225,7 @@ const CreateEstagiario = () => {
     const formattedCollaboratorName = convertToUpperCase(colaborador.nome);
   
     const emailSubject = `Criação de Acessos Nitro: ${formattedCollaboratorName}`;
-    const emailBody = `
-Prezados,
+    const emailBody = `Prezados,
 
 Acesso criado conforme solicitação ${colaborador.chamado} - Nitro - TI - Acessos - Novo 
 Colaborador - Estagiário
