@@ -525,12 +525,12 @@ Atenciosamente,
           <br />
           <p><strong>Acesso Email</strong></p>
           <p>user Login: apr.{createUsername()}@nitroquimica.com.br</p>
-          <p>Nome caixa de e-mail: apr.{createEmail()}@nitro.com.br</p>
+          <p>Nome caixa de e-mail: apr.{createEmail()}</p>
           <p>Senha: {nitroPassword()}</p>
           <p>Link de acesso Aplicativos Office: <a href="https://www.office.com/">https://www.office.com/</a></p>
           <br />
           <p><strong>Plataforma de Chamados</strong></p>
-          <p>Login Desk Manager: apr.{createEmail()}@nitro.com.br</p>
+          <p>Login Desk Manager: apr.{createEmail()}</p>
           <p>Senha: {nitroPassword()}</p>
           <p>Link de Acesso Desk Manager: <a href="https://computecnica.desk.ms/?LoginPortal">https://computecnica.desk.ms/?LoginPortal</a></p>
           <br />
