@@ -257,7 +257,7 @@ ${getNumeroText()}.
 Atenciosamente,`;
 
 //sem numero para contato
-const txt2 = `${greetings} ${solicitante}!</p>
+const txt2 = `${greetings} ${solicitante}!
 
 Não identificamos nenhum telefone para contato.
 
